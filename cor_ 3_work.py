@@ -1,12 +1,12 @@
 #core 3 
-import * from math
+from math import gcd, floor, log
 import random
 
 #set construction for rationals - this can probably be optimised but good enough for now
 def f_Q(Q):
     f_Q = []
-    for q in range(Q+1):
-        for a in range(0,q):
+    for q in range(2, Q+1):
+        for a in range(1,q):
             if gcd(a,q) == 1:
                 f_Q.append(a/q)
     return f_Q 
