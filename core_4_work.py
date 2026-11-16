@@ -1,3 +1,4 @@
+# Continued Fraction Lengths
 from math import gcd
 from collections import Counter
 
@@ -52,3 +53,31 @@ assert core4_coefficients(3, 5) == [1, 1, 2]
 assert core4_coefficients(5, 8) == [1, 1, 1, 2]
 
 print("The example checks passed.")
+
+## Minimum denominator for a given length
+# Search in increasing denominator order.
+def core4_minimum_denominators(Q):
+    minimums = {}
+
+    for a, q in core4_fractions(Q):
+        k = core4_length(a, q)
+
+        if k not in minimums:
+            minimums[k] = (a, q)
+
+    return minimums
+
+
+search_Q = 200
+minimums = core4_minimum_denominators(search_Q)
+
+print("Length | Example fraction | Minimum denominator | Fibonacci prediction")
+
+for k in sorted(minimums):
+    a, q = minimums[k]
+    predicted = core4_fibonacci(k + 2)
+
+    print(f"{k:6d} | {a:3d}/{q:<11d} | {q:19d} | {predicted:20d}")
+
+    assert q == predicted
+    assert core4_coefficients(a, q) == [1] * (k - 1) + [2]
