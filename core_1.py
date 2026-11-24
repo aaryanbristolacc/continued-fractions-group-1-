@@ -19,7 +19,7 @@ def continued_fraction(theta, n):
         remainder = theta_i - a
 
         # Stop the loop if its an exact integer (a = theta)
-        if abs(remainder) < 1e-15:
+        if abs(remainder) < 1e-9:
             break
 
         theta_i = 1 / remainder
@@ -51,16 +51,16 @@ print("Root 5 expanded is :", cf_irrational)
 print("Root 5 reconstructed is :", reconstructed_rational(cf_irrational))
 
 # Analysis
-# Execution time
+# Execution time with pythons in built speed test. Reseting timer (t0) to 0 each time.
 t0 = time.perf_counter()
 cf = continued_fraction(math.sqrt(5), n=10)
 t_cf = (time.perf_counter() - t0) * 1e6
 
 t0 = time.perf_counter()
-frac = reconstruct_rational(cf)
+frac = reconstructed_rational(cf)
 t_rec = (time.perf_counter() - t0) * 1e6
 
 print(f"continued_fraction time: {t_cf:.2f} microseconds")
-print(f"reconstruct_rational time: {t_rec:.2f} microseconds")
+print(f"reconstructed_rational time: {t_rec:.2f} microseconds")
 
 # Hence our reconstructed function is faster
