@@ -2,7 +2,6 @@
 
 
 #making the function to compute the frequency
-
 """
 to declutter what the notation is saying in words its asking for the cardinality of the set of ordered pairs of
 (x,j) such that x is an array taken from the random sample of f_Q and j is an index in in the array of x such that
@@ -63,8 +62,8 @@ def p(k,A):
     for x in A:
         cf = continued_fraction(x)
         
-        sum_length_x += len(cf)
-        for j in range(len(cf)):
+        sum_length_x += len(cf) -1 # -1 to remove accounting for first 0 of array
+        for j in range(1,len(cf)): # starting after the 0 first index of array
             if cf[j] == k:
                 counter += 1
     return counter/sum_length_x 
@@ -86,4 +85,5 @@ plt.xticks(list(k_values))
 plt.grid(True, alpha=0.3)
 
 plt.show()
+
 
