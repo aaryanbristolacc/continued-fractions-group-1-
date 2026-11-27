@@ -50,6 +50,21 @@ def cf_length(a, q):
 
 
 
+
+def gm(a, q):
+    p = 0
+    while a > 0:
+        p += log(a / q) 
+        a, q = q % a, a      
+    return p
+
+
+
+
+
+
+
+
 def calculate_S(fractions):
 
     S_one = []
@@ -61,8 +76,7 @@ def calculate_S(fractions):
         S_one.append(cf_length(a, q))
 
 # phi(x) = log(1/x)#
-#all the bits end up cancelling out just leaving the denominator (logs added mean inside multiplied)#        
-        S_log.append(log(q))
+        S_log.append(gm(a, q))
 
     return np.array(S_one), np.array(S_log)
 
