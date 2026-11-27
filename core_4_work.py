@@ -268,10 +268,3 @@ for k, count, probability in zip(
 # It does not determine the probability of that length; those
 # probabilities are calculated separately through P_Q(k).
 
-
-# Comparison with Core 3:
-
-
-
-
-
