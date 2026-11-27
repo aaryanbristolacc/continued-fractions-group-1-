@@ -54,10 +54,9 @@ def cf_length(a, q):
 def gm(a, q):
     p = 0
     while a > 0:
-        p += log(a / q) 
+        p += log(q / a) 
         a, q = q % a, a      
     return p
-
 
 
 
