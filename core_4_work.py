@@ -235,36 +235,31 @@ for k, count, probability in zip(
     print(f"{k:2d} | {count:6d} | {probability:.6f}")
 
 # 5. Interpretation
-# The mean length increases from approximately 2.63 for Q = 20
-# to 4.51 for Q = 200. The standard deviation increases from
-# approximately 1.06 to 1.52. The distribution therefore shifts
-# towards longer expansions and becomes more spread out.
+# The mean length increases from approximately 2.63 for Q = 20 to 4.51 for Q = 200. The standard deviation increases from approximately 1.06 to 1.52. The distribution therefore shifts towards longer expansions and becomes more spread out.
 #
 # The Fibonacci formula gives the maximum possible length:
-#
 # k_max(Q) = max{k : F_{k+2} <= Q}.
 #
-# The maximum lengths for Q = 20, 50, 100 and 200 are
-# 5, 7, 9 and 10 respectively, agreeing with the formula.
+# The maximum lengths for Q = 20, 50, 100 and 200 are 5, 7, 9 and 10 respectively, agreeing with the formula.
 #
 # For example, F_12 = 144 <= 200, but F_13 = 233 > 200.
-# Therefore, a fraction with denominator at most 200 can have
-# length 10, but cannot have length 11.
+# Therefore, a fraction with denominator at most 200 can have length 10, but cannot have length 11.
 #
 # Fibonacci numbers grow approximately exponentially.
-# Consequently, the maximum possible length grows logarithmically
-# with Q.
+# Consequently, the maximum possible length grows logarithmically with Q.
 #
-# The maximum length is not the most common length. For Q = 200,
-# the most frequent length is 4, with 3018 fractions. Only three
-# fractions have length 10.
+# The maximum length is not the most common length. For Q = 200, the most frequent length is 4, with 3018 fractions. Only three fractions have length 10.
 #
-# Near the maximum possible length, the coefficients are strongly
-# restricted by the denominator bound: increasing coefficients
-# increases the denominator. This helps explain why very long
-# expansions are rare in these finite distributions.
+# Near the maximum possible length, the coefficients are strongly restricted by the denominator bound: increasing coefficients increases the denominator. This helps explain why very long expansions are rare in these finite distributions.
 #
 # The sequence d_k determines when a length first becomes possible.
-# It does not determine the probability of that length; those
-# probabilities are calculated separately through P_Q(k).
+# It does not determine the probability of that length; those probabilities are calculated separately through P_Q(k).
 
+# Comparison with Core 3
+#
+# For phi = 1, the statistic S_1(x) equals the continued fraction length ell(x).
+#
+# Using the Core 3 sampling function with Q = 100, 50,000 draws with replacement and random.seed(42), we obtained a mean length of 3.9189 and a standard deviation of 1.3939.
+#
+# The corresponding full-set values from Core 4 are 3.9244 and 1.3906. These values are close, with a difference of approximately 0.0055 in the means.
+# The small differences are consistent with random sampling variation.
